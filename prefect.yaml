@@ -1,0 +1,95 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: ML_1
+prefect-version: 3.1.0
+
+# build section allows you to manage and build docker images
+build:
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push:
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name:
+  version:
+  tags: []
+  description:
+  schedule: {}
+  flow_name:
+  entrypoint:
+  parameters: {}
+  work_pool:
+    name:
+    work_queue_name:
+    job_variables: {}
+- name: ML_Uebung2_aufgabe1
+  version:
+  tags: []
+  concurrency_limit:
+  description:
+  entrypoint: ./flows/aufgabe1.py:train_model_flow
+  parameters: {}
+  work_pool:
+    name: ML_Uebung2
+    work_queue_name:
+    job_variables: {}
+  enforce_parameter_schema: true
+  schedules: []
+  pull:
+  - prefect.deployments.steps.set_working_directory:
+      directory: /home/datata1/Documents/Janka
+- name: ML_Uebung2_aufgabe1_grid_search
+  version:
+  tags: []
+  concurrency_limit:
+  description:
+  entrypoint: ./flows/aufgabe1.py:grid_search
+  parameters: {}
+  work_pool:
+    name: ML_Uebung2
+    work_queue_name:
+    job_variables: {}
+  enforce_parameter_schema: true
+  schedules: []
+  pull:
+  - prefect.deployments.steps.set_working_directory:
+      directory: /home/datata1/Documents/Janka
+- name: ML_Uebung2_aufgabe1_cross_validation
+  version:
+  tags: []
+  concurrency_limit:
+  description:
+  entrypoint: ./flows/aufgabe2.py:cross_validation
+  parameters: {}
+  work_pool:
+    name: ML_Uebung2
+    work_queue_name:
+    job_variables: {}
+  enforce_parameter_schema: true
+  schedules: []
+  pull:
+  - prefect.deployments.steps.set_working_directory:
+      directory: /home/datata1/Documents/Janka
+- name: ML_Uebung2_aufgabe3_nested_cross_validation
+  version:
+  tags: []
+  concurrency_limit:
+  description:
+  entrypoint: ./flows/aufgabe3.py:nested_cross_validation
+  parameters: {}
+  work_pool:
+    name: ML_Uebung2
+    work_queue_name:
+    job_variables: {}
+  enforce_parameter_schema: true
+  schedules: []
+  pull:
+  - prefect.deployments.steps.set_working_directory:
+      directory: /home/datata1/Documents/Janka
