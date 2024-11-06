@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SESSION_NAME="JankaSession"
-ROOT_DIR="$HOME/Documents/Janka"
+ROOT_DIR="$HOME/Documents/Janka/Uebung2/nested_cross_validation"
 
 tmux has-session -t $SESSION_NAME 2>/dev/null
 

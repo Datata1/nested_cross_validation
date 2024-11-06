@@ -12,7 +12,7 @@ from tasks.train_model import train_model, train_and_evaluate_alpha
 from tasks.standartscaler import scale_features
 
 
-@flow
+@flow(flow_run_name="{method}-{scale}-{alpha}-{file_name}-{drop_columns}-{pop}")
 async def train_model_flow(sample: int = 0, 
                            method: str = "Ridge", 
                            alpha: float = 0, 
@@ -60,7 +60,7 @@ async def train_model_flow(sample: int = 0,
                            )
 
 
-@flow(task_runner=DaskTaskRunner())
+@flow(flow_run_name="{method}-{scale}-{interval}-{file_name}-{drop_columns}-{pop}", task_runner=DaskTaskRunner())
 async def grid_search(interval: Tuple[float, float, int], 
                       method: str = "Ridge", 
                       scale: bool = False, 

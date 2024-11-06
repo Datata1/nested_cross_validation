@@ -65,7 +65,7 @@ humanize = "==4.11.0"
 hyperframe = "==6.0.1"
 idna = "==3.10"
 importlib-metadata = "==8.4.0"
-ipykernel = "==6.29.5"
+ipykernel = "*"
 ipython = "==8.29.0"
 isoduration = "==20.11.0"
 jedi = "==0.19.1"
@@ -202,6 +202,7 @@ websockets = "==13.1"
 wrapt = "==1.16.0"
 zict = "==3.0.0"
 zipp = "==3.20.2"
+jupyter = "*"
 
 [dev-packages]
 

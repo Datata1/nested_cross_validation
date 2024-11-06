@@ -12,10 +12,10 @@ from flows.aufgabe1 import train_model_flow
 from tasks.train_model import train_and_evaluate_alpha, train_model
 from tasks.standartscaler import scale_features
 
-@flow(task_runner=DaskTaskRunner())
+@flow(flow_run_name="{method}-{scale}-{interval}-{file_name}-{drop_columns}-{pop}", task_runner=DaskTaskRunner())
 async def nested_cross_validation(file_name: str = "immo_data_preprocessed.csv",
                                    drop_columns: List[str] = [],
-                                   interval: Tuple[float, float, int] = (0.01, 10, 100),
+                                   interval: Tuple[float, float, int] = (1, 100, 50),
                                    method: str = "Ridge",
                                    scale: bool = False,
                                    pop: str = "baseRent",

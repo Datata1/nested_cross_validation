@@ -14,7 +14,7 @@ from tasks.standartscaler import scale_features
 from sklearn.model_selection import KFold
 
 
-@flow(task_runner=DaskTaskRunner())
+@flow(flow_run_name="{method}-{scale}-{interval}-{file_name}-{drop_columns}-{pop}", task_runner=DaskTaskRunner())
 async def cross_validation(file_name: str = "immo_data_preprocessed.csv",
                            drop_columns: List[str] = [],
                            interval: Tuple[float, float, int] = (0.01, 10, 100),
